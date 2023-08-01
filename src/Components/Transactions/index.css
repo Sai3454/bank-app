@@ -1,0 +1,44 @@
+.bank-app-transactions-all{
+    height: 100vh;
+    overflow-y: auto;
+    background-color: rgba(182, 182, 179, 0.466);
+}
+
+.bank-app-transactions-conatiner{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.bank-app-latest-transactions{
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.bank-app-transactions-tabs{
+    display: flex;
+    justify-content: space-around;
+    width: 60vw;
+}
+
+.bank-app-transactions-tab{
+    /* padding: 10px; */
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-bottom: 0px;
+    /* height: 10vh; */
+}
+
+.bank-app-transactions-active {
+    background-color: rgb(47, 98, 175);
+    font-weight: bold;
+}
+
+.transactions-highlite{
+    width: 5vw;
+    height: 3px;
+    margin-top: 0px;
+    text-align: center;
+  }

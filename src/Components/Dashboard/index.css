@@ -1,0 +1,41 @@
+.bank-app-dashboard-container{
+    height: 100vh;
+    overflow-y: auto;
+    background-color: rgba(182, 182, 179, 0.466);
+    max-width: 80vw;
+}
+
+.bank-app-total-container{
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.bank-app-total{
+    width: 60vw;
+    display: flex;
+    justify-content: space-around;
+}
+
+.bank-app-credit-total{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    height: 16vh;
+    width: 25vw;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.total-credit{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.total-credit-value{
+    font-size: 17px;
+}

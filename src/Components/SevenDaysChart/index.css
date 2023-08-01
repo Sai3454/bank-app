@@ -1,0 +1,16 @@
+.bank-app-chart-container{
+    height: 70vh;
+    width: 74vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.bank-app-chart-main{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 30px;
+}

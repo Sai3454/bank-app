@@ -1,0 +1,40 @@
+.bank-app-add-transaction-form{
+    height: 65vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.add-transaction-input-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-height: 10vh;
+}
+
+.add-transaction-label{
+    font-size: 15px;
+    padding: 5px;
+}
+
+.add-transaction-input{
+    height: 7vh;
+    border-radius: 5px;
+}
+
+.add-transaction-submit-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 10vh;
+}
+
+.add-transaction-submit{
+    background-color: rgb(33, 63, 236);
+    color: white;
+    font-size: 15px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}

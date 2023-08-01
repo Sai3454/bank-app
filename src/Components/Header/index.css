@@ -1,0 +1,44 @@
+.bank-app-header{
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.bank-app-header-menu{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.add-transaction-head{
+    font-size: 13px;
+}
+
+.add-transaction-plus{
+    font-size: 13px;
+    padding-top: 11px;
+}
+
+.accounts-head{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.add-transaction-button {
+    background-color: #007bff; /* Primary background color */
+    color: #fff; /* Text color (white) */
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: space-around;
+    width: 15vw;
+    max-height: 7vh;
+}
