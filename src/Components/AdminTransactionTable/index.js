@@ -12,12 +12,13 @@ const AdminTransactionTable = (props) => {
   const {loading, userDetails} = useSelector((state) => state.transactions)
 
   const getUsername = (userId) => {
-    const index = userDetails.findIndex(each => each.userId === userId)
+    const index = userDetails.findIndex(each => each.userId === parseInt(userId))
     return userDetails[index].name
   }
 
   const getProfilePic = (userId) => {
-    const index = userDetails.findIndex(each => each.userId === userId)
+    const index = userDetails.findIndex(each => each.userId === parseInt(userId))
+    console.log(userId, index)
     return userDetails[index].profilePic
   }
 
@@ -50,7 +51,7 @@ const AdminTransactionTable = (props) => {
         <div className='transaction-table-container'>
           <div className='transaction-table-col'>
             <div className='transaction-table-col-names transaction-name-col'>User Name</div>
-            <div className='record transaction-editable-col'>Transaction Name</div>
+            <div className='transaction-table-col-names transaction-editable-col'>Transaction Name</div>
             <div className='transaction-table-col-names transaction-category-col'>Category</div>
             <div className='transaction-table-col-names transaction-date-col'>Date</div>
             <div className='transaction-table-col-names transaction-amount-col'>Amount</div>

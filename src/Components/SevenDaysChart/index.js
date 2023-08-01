@@ -142,7 +142,7 @@ const CreditDebitChart = (props) => {
         <div className="bank-app-chart-main">
 
         <div id="chart" className="bank-app-chart-container">
-            <Chart options={options} series={series} type="line" height={350} width={750} />
+            <Chart options={options} series={series} type="line" height={350} width={760} />
         </div>
         </div>)
 }

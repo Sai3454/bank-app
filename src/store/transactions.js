@@ -184,7 +184,46 @@ const userDetails = [
       city: 'Orlando',
       postalCode: '32801',
       country: 'United States',
-    }
+    },
+    {
+        userId: 15,
+        name: 'Mia Rodriguez',
+        username: 'miarodriguez',
+        permanentAddress: '999 Oakwood Dr, Unit 22',
+        email: 'miarodriguez@example.com',
+        password: 'mia123',
+        profilePic: 'https://example.com/profiles/miarodriguez.jpg',
+        dateOfBirth: '1992-11-19',
+        city: 'Phoenix',
+        postalCode: '85001',
+        country: 'United States',
+      },
+      {
+        userId: 16,
+        name: 'Liam Garcia',
+        username: 'liamg',
+        permanentAddress: '111 Elm Ave, Apt 2',
+        email: 'liamg@example.com',
+        password: 'liam789',
+        profilePic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXenVR5vEfY6VCbkPmQBc5731ZxOLHJfOSjw&usqp=CAU',
+        dateOfBirth: '1999-01-08',
+        city: 'Las Vegas',
+        postalCode: '89101',
+        country: 'United States',
+      },
+      {
+        userId: 17,
+        name: 'Ava Lopez',
+        username: 'avalopez',
+        permanentAddress: '222 Pine St, Apt 7',
+        email: 'avalopez@example.com',
+        password: 'ava567',
+        profilePic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXenVR5vEfY6VCbkPmQBc5731ZxOLHJfOSjw&usqp=CAU',
+        dateOfBirth: '1993-12-17',
+        city: 'Orlando',
+        postalCode: '32801',
+        country: 'United States',
+      }
 ]
 
 const initialState = {
@@ -221,15 +260,17 @@ const transactionsSlice = createSlice({
 
         apiRequestFailed: (state, action) => {
             state.loading = false;
+            state.pageName = "failure"
         },
 
-        showLoginError: (state, payload) => {
+        showLoginError: (state, action) => {
             state.loginError = "User ID, Password does not matched"
             state.loading = false;
         },
 
-        setLoginError: (state, payload) => {
+        setLoginError: (state, action) => {
             state.loginError = null
+            state.userId = action.payload.get_user_id.id
         },
 
         updateAllTypeTransactions: (state, action) => {
@@ -415,6 +456,7 @@ export const addNewTransaction = (data) => {
         data,
         onStart: apiRequested.type,
         onSuccess: addTransaction.type,
+        onError: apiRequestFailed.type
     });
 }
 
@@ -425,6 +467,7 @@ export const updateTransaction = (data) => {
                 method: "POST",
                 data,
                 onStart: apiRequested.type,
+                onError: apiRequestFailed.type,
                 onSuccess: updatedTransaction.type,
             });
 }
@@ -464,5 +507,6 @@ export const getTotalDebitCredits = (role) => {
         method: "GET",
         onStart: apiRequested.type,
         onSuccess: updateDebitCredit.type,
+        onError: apiRequestFailed.type
     });
 }

@@ -1,8 +1,10 @@
 .bank-app-profile-container{
-    height: 80vh;
+    height: 90vh;
+    width: 80vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    background-color: rgba(182, 182, 179, 0.466);
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -10,9 +12,10 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 80vw;
+    width: 70vw;
     background-color: white;
-    padding: 10px;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .row-1{
@@ -36,6 +39,8 @@
     font-size: 15px;
 }
 
-.bank-app-profile-label{
-
+.custome-image{
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
 }

@@ -47,8 +47,8 @@ const LeftSidebar = () => {
   return (
     <div className="bank-app-left-sidebar">
         <div className='bank-app-sidebar-top'>
-      <div className="bank-app-logo">
-        <h3>Money Matters</h3>
+      <div className="bank-app-logo-container">
+        <img src="https://saikirishnakoorakula.tech/Logo.png" alt="alt" className='bank-app-logo'/>
       </div>
       <div className="bank-app-tabs">
         <div

@@ -8,6 +8,7 @@ import Profile from '../Profile'
 import './index.css'
 import { Loader } from '../Loader'
 import Cookies from 'js-cookie'
+import { FailureView } from '../FailureView'
 
 export const Home = () => {
 
@@ -25,6 +26,8 @@ export const Home = () => {
             return <Transactions />
         case "profile":
             return <Profile />
+        case "failure":
+          return <FailureView />
         default :
             return <Loader />
     }

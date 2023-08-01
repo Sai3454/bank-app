@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
+import * as Avatar from '@radix-ui/react-avatar';
 import './index.css'
 import { Header } from '../Header';
 
@@ -18,6 +19,9 @@ const Profile = () => {
     <div>
       <Header title="Profile"/>
     <div className="bank-app-profile-container">
+        <div className='profile-pic-container'>
+            <img className='custome-image' src={selectedUser.profilePic} alt={selectedUser.name} />
+        </div>
       <div className="bank-app-profile-user-details">
         <div className='row-1'>
         <div className='profile-input-conatiner'>

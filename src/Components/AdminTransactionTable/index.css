@@ -81,9 +81,7 @@
   }
   
   .transaction-editable-col{
-    width: 7vw;
-    display: flex;
-    justify-content: space-between;
+    width: 12vw;
   }
   
   .transaction-records-container{
