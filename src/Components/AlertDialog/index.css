@@ -57,6 +57,7 @@ button {
   line-height: 1;
   font-weight: 500;
   height: 35px;
+  cursor: pointer;
 }
 .Button.violet {
   background-color: white;

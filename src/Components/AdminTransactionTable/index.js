@@ -13,16 +13,22 @@ const AdminTransactionTable = (props) => {
 
   const getUsername = (userId) => {
     const index = userDetails.findIndex(each => each.userId === parseInt(userId))
-    return userDetails[index].name
+    if(index >= 0){
+      return userDetails[index].name
+    }else{
+      return ""
+    }
   }
 
   const getProfilePic = (userId) => {
     const index = userDetails.findIndex(each => each.userId === parseInt(userId))
-    console.log(userId, index)
-    return userDetails[index].profilePic
+    if(index >= 0){
+      return userDetails[index].profilePic
+    }else{
+      return ""
+    }
   }
 
-  console.log(userDetails)
 
   const formatDate = (dateTimeString) => { 
 

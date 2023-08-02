@@ -10,7 +10,6 @@ import Cookies from 'js-cookie';
 const Dashboard = () => {
 
   const  {lastSevenDays, latestTransactions, totalCredit, totalDebit} = useSelector((state) => state.transactions)
-  console.log(lastSevenDays)
   const role = Cookies.get('x-hasura-user-role')
 
 

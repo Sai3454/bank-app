@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import employeeReducer from "./employees";
 import transactionsReducer from "./transactions";
 import error from "./middleware/error";
 import api from "./middleware/api";

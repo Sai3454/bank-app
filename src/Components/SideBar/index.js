@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Avatar from '@radix-ui/react-avatar';
 import './index.css'; // Import the CSS for styling
-import { setPageName } from '../../store/transactions';
+import { onSuccessLogout, setPageName } from '../../store/transactions';
 import { useDispatch, useSelector } from 'react-redux';
 import {FiLogOut} from 'react-icons/fi'
 import Cookies from 'js-cookie';
@@ -35,6 +35,7 @@ const LeftSidebar = () => {
     Cookies.remove("x-hasura-admin-secret");
     Cookies.remove("x-hasura-user-id");
     Cookies.remove("x-hasura-user-role");
+    dispatch(onSuccessLogout())
     navigate('/login')
   }
 

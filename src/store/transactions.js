@@ -179,7 +179,7 @@ const userDetails = [
       permanentAddress: '222 Pine St, Apt 7',
       email: 'avalopez@example.com',
       password: 'ava567',
-      profilePic: 'https://example.com/profiles/avalopez.jpg',
+      profilePic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXenVR5vEfY6VCbkPmQBc5731ZxOLHJfOSjw&usqp=CAU',
       dateOfBirth: '1993-12-17',
       city: 'Orlando',
       postalCode: '32801',
@@ -252,6 +252,7 @@ const transactionsSlice = createSlice({
             state.pageName = action.payload.page_name
         },
 
+        
 
         apiRequested: (state, action) => {
             state.loading = true;
@@ -265,15 +266,29 @@ const transactionsSlice = createSlice({
 
         showLoginError: (state, action) => {
             state.loginError = "User ID, Password does not matched"
-            state.loading = false;
         },
 
-        setLoginError: (state, action) => {
+        onSuccessLogin: (state, action) => {
             state.loginError = null
-            state.userId = action.payload.get_user_id.id
+            state.pageName = 'dashboard'
         },
+
+        onSuccessLogout: (state, action) => {
+          state.allTransactions = []
+          state.creditTransactions = []
+          state.debitTransactions = []
+          state.error = null
+          state.lastSevenDays = []
+          state.latestTransactions = []
+          state.loading = false
+          state.loginError = null
+          state.pageName = ''
+          state.totalCredit = 0
+          state.totalDebit = 0
+      },
 
         updateAllTypeTransactions: (state, action) => {
+            state.loading = false
             state.creditTransactions = state.allTransactions.filter(eachTransaction => eachTransaction.type === 'credit')
             state.debitTransactions = state.allTransactions.filter(eachTransaction => eachTransaction.type === 'debit')
             const sortedData = [...state.allTransactions].sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -292,7 +307,7 @@ const transactionsSlice = createSlice({
                   const transactionDate = new Date(transaction.date);
                   transactionDate.setHours(0, 0, 0, 0); // Set the time to midnight (00:00:00) for accurate date comparison
                   const timeDifferenceInDays = (currentDate - transactionDate) / (1000 * 60 * 60 * 24);
-                  return timeDifferenceInDays >= 0 && timeDifferenceInDays < 7;
+                  return timeDifferenceInDays >= 0 && timeDifferenceInDays <= 7;
                 });
               
                 // Sort transactions in descending order based on date
@@ -339,23 +354,22 @@ const transactionsSlice = createSlice({
               const lastSevenDaysTransactionsArray = lastSevenDaysTransactions();
               
 
-            state.loading = false
             state.lastSevenDays = lastSevenDaysTransactionsArray
-            console.log(state.lastSevenDays);
 
         },
 
 
         getTransactions: (state, action) => {
             state.allTransactions = action.payload.transactions;
-            state.loading = false;
-            state.creditTransactions = state.allTransactions.filter(eachTransaction => eachTransaction.type === 'credit')
-            state.debitTransactions = state.allTransactions.filter(eachTransaction => eachTransaction.type === 'debit')
         },
 
         addTransaction: (state, action) => {
             state.allTransactions.push(action.payload.insert_transactions_one)
-            state.loading = false
+            if(action.payload.insert_transactions_one.type === 'credit'){
+                state.totalCredit += action.payload.insert_transactions_one.amount
+            }else{
+                state.totalDebit += action.payload.insert_transactions_one.amount
+            }
         },
 
         removeTransaction: (state, action) => {
@@ -363,6 +377,11 @@ const transactionsSlice = createSlice({
                 const index = state.allTransactions.findIndex(
                     (transaction) => transaction.id === action.payload.delete_transactions_by_pk.id
                 );
+                if(state.allTransactions[index].type === 'credit'){
+                    state.totalCredit -= state.allTransactions[index].amount
+                }else{
+                    state.totalDebit -= state.allTransactions[index].amount
+                }
                 state.allTransactions.splice(index, 1);
             }
             catch(error){
@@ -422,7 +441,9 @@ export const {
     removeTransaction,
     showLoginError,
     setLoginError,
-    updateDebitCredit
+    updateDebitCredit,
+    onSuccessLogout,
+    onSuccessLogin
 } = transactionsSlice.actions;
 export default transactionsSlice.reducer;
 
@@ -494,7 +515,7 @@ export const getUserId = (data) => {
         params: data,
         onLoginFailue: showLoginError.type,
         onError: apiRequestFailed.type,
-        onSuccess: setLoginError.type
+        onSuccess: onSuccessLogin.type
     });
 }
 

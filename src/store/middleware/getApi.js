@@ -50,9 +50,7 @@ const getApi =
                 dispatch({type: onLoginFailue})
             }
         } catch (error) {
-            if (onError)
-                dispatch({ type: onError, payload: { error: error.message } });
-            dispatch({ type: "SHOW_ERROR", payload: { error: error.message } });
+            dispatch({ type: onError, payload: { error: error.message } }); 
         }
     };
 
