@@ -43,7 +43,7 @@ const Dashboard = () => {
             <h1 className='bank-app-header-text'>Latest Transactions</h1>
           </div>
         </div>
-        <div className='bank-app-latest-transactions'>
+        <div className='bank-app-latest-transaction'>
           {role === 'admin' ? <AdminTransactionTable transactions={latestTransactions}/> :
             <TransactionTable transactions={latestTransactions}/>}
         </div>

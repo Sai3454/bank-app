@@ -190,7 +190,7 @@ const TransactionTable = (props) => {
                 </div>
               </div>
               <div>
-                <hr className='record-divider'/>
+                <hr className='record-divide'/>
               </div>
               </div>
             ))}
