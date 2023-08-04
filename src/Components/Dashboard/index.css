@@ -1,41 +1,74 @@
 .bank-app-dashboard-container{
     height: 100vh;
+    background-color: #FAF9F6;
     overflow-y: auto;
-    background-color: rgba(182, 182, 179, 0.466);
+    font-family: Roboto;
     max-width: 80vw;
 }
 
+.bank-app-header-text{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.bank-app-header-text-container{
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    margin-top: 10px;
+}
+
+.bank-app-header-txt{
+    width: 70vw;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
 .bank-app-total-container{
-    height: 20vh;
+    height: 25vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
+    margin-top: 10px;
 }
 
 .bank-app-total{
-    width: 60vw;
+    width: 75vw;
+    max-height: 25vh;
+    height: 24vh;
     display: flex;
     justify-content: space-around;
 }
 
 .bank-app-credit-total{
     display: flex;
-    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     padding: 10px;
-    height: 16vh;
-    width: 25vw;
+    width: 34vw;
     background-color: white;
     border-radius: 10px;
 }
 
 .total-credit{
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 15px;
 }
 
 .total-credit-value{
-    font-size: 17px;
+    font-size: 27px;
+    color: rgb(30, 192, 165);
+}
+
+.total-debit-value{
+    font-size: 27px;
+    color: rgb(224, 68, 107);
+}
+
+.bank-app-credit-image{
+    height: 100px;
+    width: 100px;
 }

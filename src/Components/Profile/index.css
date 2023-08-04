@@ -2,8 +2,8 @@
     height: 90vh;
     width: 80vw;
     display: flex;
+    background-color: #FAF9F6;
     flex-direction: column;
-    background-color: rgba(182, 182, 179, 0.466);
     justify-content: space-around;
     align-items: center;
 }

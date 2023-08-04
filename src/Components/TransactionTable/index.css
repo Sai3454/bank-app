@@ -1,16 +1,32 @@
 .transaction-table-container{
-  max-width: 70vw;
-  background-color: aliceblue;
+  width: 70vw;
+  background-color: white;
   /* margin: 20px; */
   padding: 20px;
-  max-height: 70vh;
+  height: fit-content;
   overflow-y: auto;
+  overflow-x: hidden;
   border-radius: 10px;
+  color: #343434 ;
+}
+
+.transaction-table-col-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 68vw;
+}
+
+.bank-app-transaction-table-container{
+  margin-bottom: 0px;
 }
 
 .transaction-table-col{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  width: 70vw;
 }
 
 .transaction-table-col-names{
@@ -19,7 +35,7 @@
 }
 
 .transaction-name-col{
-  width: 25vw;
+  width: 20vw;
 }
 
 .transaction-category-col{
@@ -27,7 +43,7 @@
 }
 
 .transaction-date-col{
-  width: 20vw;
+  width: 15vw;
 }
 
 .transaction-amount-col{
@@ -42,8 +58,8 @@
   color: rgb(221, 73, 92);
 }
 
-.transaction-editable-col{
-  width: 7vw;
+.transaction-editable{
+  width: 6vw;
   display: flex;
   justify-content: space-between;
 }
@@ -56,14 +72,14 @@
 .transaction-record{
   display: flex;
   justify-content: space-between;
+  width: 68vw;
+  height: 5vh;
 }
 
-.record{
-  display: flex;
-}
 
 .record-name{
   display: flex;
+  align-items: center;
 }
 
 .transaction-up-arrow{
@@ -79,7 +95,7 @@
   margin-right: auto;
   border-style: inset;
   border-width: 0.5px;
-  border-color: #EAEDEB
+  border-color: white;
 } 
 
 

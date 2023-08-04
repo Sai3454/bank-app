@@ -1,7 +1,8 @@
 .bank-app-transactions-all{
     height: 100vh;
     overflow-y: auto;
-    background-color: rgba(182, 182, 179, 0.466);
+    background-color: #FAF9F6;
+    
 }
 
 .bank-app-transactions-conatiner{

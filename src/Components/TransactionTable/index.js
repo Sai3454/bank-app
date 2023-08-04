@@ -139,37 +139,48 @@ const TransactionTable = (props) => {
   }
 
   return (
-    <div>
+    <div className='bank-app-transaction-table-container'>
       {loading ? (
         <Loader />
       ) : (
         <div className='transaction-table-container'>
           <div className='transaction-table-col'>
+            <div className='transaction-table-col-container'>
             <div className='transaction-table-col-names transaction-name-col'>Transaction Name</div>
             <div className='transaction-table-col-names transaction-category-col'>Category</div>
             <div className='transaction-table-col-names transaction-date-col'>Date</div>
             <div className='transaction-table-col-names transaction-amount-col'>Amount</div>
-            <div className='record transaction-editable-col'></div>
+            <div className='transaction-editable'></div>
+            </div>
           </div>
           <hr className='record-divider'/>
           <div className='transaction-records-container'>
             {transactions.map(eachTransaction => (
               <div key ={eachTransaction.id}>
-              <div className='transaction-record'>
+              <div className='transaction-table-col'>
                 <div className='record-name transaction-name-col'>
-                  {eachTransaction.type === 'credit' ? <MdOutlineArrowCircleUp className='transaction-up-arrow'/> : <MdOutlineArrowCircleDown className='transaction-down-arrow' />}
+                  {eachTransaction.type === 'credit' ? (
+                    <div className='bank-app-uparrow'>
+                      <MdOutlineArrowCircleUp className='transaction-up-arrow'/>
+                    </div>
+                  )
+                   : (
+                    <div className='bank-app-uparrow'>
+                      <MdOutlineArrowCircleDown className='transaction-down-arrow' />
+                    </div>
+                   )}
                   <p>{eachTransaction.transaction_name}</p>
                 </div>
-                <div className='record transaction-category-col'>
+                <div className='transaction-table-col-names transaction-category-col'>
                   <p>{eachTransaction.category}</p>
                 </div>
-                <div className='record transaction-date-col'>
+                <div className='transaction-table-col-names transaction-date-col'>
                   <p>{formatDate(eachTransaction.date)}</p>
                 </div>
-                <div className={`record transaction-amount-col ${eachTransaction.type === 'credit' ? 'amount-credit' : 'amount-debit'}`}>
+                <div className={`transaction-table-col-names transaction-amount-col ${eachTransaction.type === 'credit' ? 'amount-credit' : 'amount-debit'}`}>
                   {eachTransaction.type === "credit" ? (<p>+₹{eachTransaction.amount}</p>) : (<p>-₹{eachTransaction.amount}</p>)}
                 </div>
-                <div className='record transaction-editable-col'>
+                <div className='transaction-editable'>
                   <button onClick={() => handleEditable(eachTransaction)} type='button'>
                     <MdOutlineModeEditOutline className='transaction-editor'/>
                   </button>
@@ -178,7 +189,9 @@ const TransactionTable = (props) => {
                   </button>
                 </div>
               </div>
-              <hr className='record-divider'/>
+              <div>
+                <hr className='record-divider'/>
+              </div>
               </div>
             ))}
           </div>

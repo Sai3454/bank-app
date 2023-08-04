@@ -5,7 +5,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    font-family: Roboto;
+    background-color: #ffff;
 }
 
 .bank-app-header-menu{
@@ -30,7 +31,7 @@
 }
 
 .add-transaction-button {
-    background-color: #007bff; /* Primary background color */
+    background-color: rgb(47, 98, 175); /* Primary background color */
     color: #fff; /* Text color (white) */
     border: none;
     padding: 5px 10px;
@@ -39,6 +40,6 @@
     transition: background-color 0.3s;
     display: flex;
     justify-content: space-around;
-    width: 15vw;
-    max-height: 7vh;
+    width: 13vw;
+    height: 5vh;
 }

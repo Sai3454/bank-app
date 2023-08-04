@@ -11,7 +11,7 @@
   .bank-app-left-sidebar {
     width: 20vw;
     height: 100vh;
-    background-color: #fff;
+    background-color: #ffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -29,14 +29,14 @@
   }
 
   .bank-app-sidebar-top{
-    height: 50vh;
+    height: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
   }
   
   .highlite{
-    width: 1vw;
+    width: 5px;
   }
 
   .bank-app-tabs {
@@ -46,7 +46,6 @@
   }
   
   .bank-app-tab {
-    padding: 8px 16px;
     cursor: pointer;
     transition: background-color 0.3s;
     display: flex;
@@ -57,20 +56,36 @@
   /* Style for the active tab */
   .bank-app-active {
     background-color: rgb(47, 98, 175);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     font-weight: bold;
+    width: 3px;
   }
   
   .bank-app-bottom-icons {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 20vw;
+    margin-bottom: 20px;
+    border: 1px solid #FAF9F6;
+  }
+
+  .bank-app-bottom-icons-container {
+    display: flex;
+    align-items: center;
     justify-content: space-around;
     width: 18vw;
-    margin-bottom: 20px;
+  }
+
+  .bank-app-sidebar-avatar-conatiner{
+    width: 6vw;
+    padding-top: 15px;
   }
   
   .bank-app-user-profile-pic {
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
     background-color: #ddd;
     border-radius: 50%;
     margin-bottom: 10px;
@@ -80,6 +95,7 @@
     font-size: 24px;
     cursor: pointer;
     color: #666;
+    width: 4vw;
   }
   
   /* Main Content styles */
@@ -110,3 +126,37 @@
   .bank-app-logo{
     width: 16vw;
   }
+
+  .bank-app-active-menu{
+    font-weight: bold;
+    color: #007bff;
+    width: 4vw;
+  }
+
+  .bank-app-active-menu-icon{
+    font-weight: bold;
+    padding-top: 18px;
+    color: #007bff;
+    width: 5vw;
+  }
+
+  .bank-app-menu{
+    font-weight: bold;
+    color: #4b88c9;
+    width: 4vw;
+  }
+
+  .bank-app-menu-icon{
+    font-weight: bold;
+    color: #4b88c9;
+    padding-top: 18px;
+  }
+
+  .bank-app-profile-name{
+    font-size: 15px;
+  }
+
+  .profile-name{
+    width: 8vw;
+  }
+

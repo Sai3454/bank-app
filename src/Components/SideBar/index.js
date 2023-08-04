@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import * as Avatar from '@radix-ui/react-avatar';
+import {FaHome, FaMoneyCheckAlt,FaUserAlt} from 'react-icons/fa'
 import './index.css'; // Import the CSS for styling
 import { onSuccessLogout, setPageName } from '../../store/transactions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -56,43 +56,41 @@ const LeftSidebar = () => {
           className={`bank-app-tab`}
           onClick={() => handleTabClick('dashboard')}
         >
-          {pageName === 'dashboard' &&  <p className={`highlite  bank-app-active`}></p>}
-          <p>Dashboard</p>
+          <p className={pageName === "dashboard" ? `bank-app-active` : 'highlite'}></p>
+          <FaHome className={pageName === "dashboard" ? `bank-app-active-menu-icon` : 'bank-app-menu-icon'}/>
+          <p className={pageName === "dashboard" ? `bank-app-active-menu` : 'bank-app-menu'}>Dashboard</p>
         </div>
         <div
           className={`bank-app-tab`}
           onClick={() => handleTabClick('transactions')}
         >
-          {pageName === 'transactions' &&  <p className={`highlite  bank-app-active`}></p>}
-          <p>Transactions</p>
+          <p className={pageName === "transactions" ? `bank-app-active` : 'highlite'}></p>
+          <FaMoneyCheckAlt className={pageName === "transactions" ? `bank-app-active-menu-icon` : 'bank-app-menu-icon'}/>
+          <p className={pageName === "transactions" ? `bank-app-active-menu` : 'bank-app-menu'}>Transactions</p>
         </div>
         <div
           className={`bank-app-tab`}
           onClick={() => handleTabClick('profile')}
         >
-          {pageName === 'profile' &&  <p className={`highlite  bank-app-active`}></p>}
-          <p>Profile</p>
+          <p className={pageName === "profile" ? `bank-app-active` : 'highlite'}></p>
+          <FaUserAlt className={pageName === "profile" ? `bank-app-active-menu-icon` : 'bank-app-menu-icon'}/>
+          <p className={pageName === "profile" ? `bank-app-active-menu` : 'bank-app-menu'}>Profile</p>
         </div>
       </div>
       </div>
       <div className="bank-app-bottom-icons">
-                <Avatar.Root className="AvatarRoot">
-                    <Avatar.Image
-                        className="AvatarImage"
-                        src={profilePic}
-                        alt="Colm Tuite"
-                    />
-                    <Avatar.Fallback className="AvatarFallback" delayMs={600}>
-                        CT
-                    </Avatar.Fallback>
-                </Avatar.Root>
-                <div>
-                  <h3>{name}</h3>
+        <div className='bank-app-bottom-icons-container'>
+              <div className='bank-app-sidebar-avatar-conatiner'>
+                <img className='bank-app-user-profile-pic' src={profilePic} alt='profile-pic' />
+              </div>
+                <div className='profile-name'>
+                  <h3 className='bank-app-profile-name'>{name}</h3>
                 </div>
         <div className="bank-app-logout-icon">
           <button type='button' onClick={handleLogOut} >
             <FiLogOut />
           </button>
+        </div>
         </div>
       </div>
       <AlertDialogDelete open={logout} close={handleCloseLogoutModal} submit={handleExecuteLogout}/>

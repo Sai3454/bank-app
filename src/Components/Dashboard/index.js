@@ -19,18 +19,38 @@ const Dashboard = () => {
         <div className='bank-app-total-container'>
           <div className='bank-app-total'>
             <div className='bank-app-credit-total'>
-              <h1 className='total-credit'>Total Credit</h1>
-              <p className='total-credit-value'>₹ {totalCredit}</p>
+              <div className='bank-app-credit-details'>
+                <p className='total-credit-value'>₹ {totalCredit}</p>
+                <h1 className='total-credit'>Credit</h1>
+              </div>
+              <div className='bank-app-credit-image-container'>
+                <img className='bank-app-credit-image' src="https://saikirishnakoorakula.tech/images/credit.png" alt="credit"/>
+              </div>
             </div>
             <div className='bank-app-credit-total'>
-              <h1 className='total-credit'>Total Debit</h1>
-              <p className='total-credit-value'>₹ {totalDebit}</p>
+                <div className='bank-app-credit-details'>
+                  <p className='total-debit-value'>₹ {totalCredit}</p>
+                  <h1 className='total-credit'>Debit</h1>
+                </div>
+                <div className='bank-app-credit-image-container'>
+                  <img className='bank-app-credit-image' src="https://saikirishnakoorakula.tech/images/debit.png" alt="credit"/>
+                </div>
             </div>
+          </div>
+        </div>
+        <div className='bank-app-header-text-container'>
+          <div className='bank-app-header-txt'>
+            <h1 className='bank-app-header-text'>Latest Transactions</h1>
           </div>
         </div>
         <div className='bank-app-latest-transactions'>
           {role === 'admin' ? <AdminTransactionTable transactions={latestTransactions}/> :
             <TransactionTable transactions={latestTransactions}/>}
+        </div>
+        <div className='bank-app-header-text-container'>
+          <div className='bank-app-header-txt'>
+            <h1 className='bank-app-header-text'>Debit and Credit Overview</h1>
+          </div>
         </div>
         <CreditDebitChart lastSevenDays={lastSevenDays}/>
     </div>

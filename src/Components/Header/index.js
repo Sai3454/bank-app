@@ -52,7 +52,9 @@ const dispatch = useDispatch()
                 <h1 className='accounts-head'>{props.title}</h1>
                 <button className="add-transaction-button" onClick={() => setAddOpen(true)}>
                     <h1 className='add-transaction-head'>Add Transaction</h1>
-                    <FaPlus className='add-transaction-plus'/>
+                    <div className='bank-app-add-icon-container'>
+                      <FaPlus className='add-transaction-plus'/>
+                    </div>
                 </button>
         </div>
         <PureModal 
