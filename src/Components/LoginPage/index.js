@@ -12,7 +12,7 @@ const SignInForm = () => {
   });
 
 //   const {loginError, userId} = useSelector((state) => state.transactions)
-const {loginError, userId} = useSelector((state) => state.transactions)
+const {loginError} = useSelector((state) => state.transactions)
 
 
   const dispatch = useDispatch()

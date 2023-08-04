@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {MdOutlineModeEditOutline, MdDeleteOutline, MdOutlineArrowCircleUp, MdOutlineArrowCircleDown} from 'react-icons/md'
 import './index.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteTransaction, updateTransaction } from '../../store/transactions'
+import { deleteTransaction, resetUpdateToastMessage, resetDeleteToastMessage, updateTransaction } from '../../store/transactions'
 import PureModal from 'react-pure-modal';
 import TransactionForm from '../AddTransactionForm'
 import AlertDialogDelete from '../AlertDialog';
@@ -12,8 +14,63 @@ import { Loader } from '../Loader'
 const TransactionTable = (props) => {
   const {transactions} = props
   const dispatch = useDispatch()
+  const {loading, updateToastMessage, deleteToastMessage} = useSelector((state) => state.transactions)
 
-  const {loading} = useSelector((state) => state.transactions)
+
+  if(updateToastMessage !== null){
+    if(updateToastMessage.method === "success"){
+      toast.success( updateToastMessage.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+    }else{
+      toast.error(updateToastMessage.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+    }
+    dispatch(resetUpdateToastMessage())
+  }
+
+  if(deleteToastMessage !== null){
+    if(deleteToastMessage.method === "success"){
+      toast.success( deleteToastMessage.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+    }else{
+      toast.error(deleteToastMessage.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+    }
+    dispatch(resetDeleteToastMessage())
+  }
+
 
   // creating transaction data that to be updated and to handle modal
 
@@ -38,10 +95,10 @@ const TransactionTable = (props) => {
     setUpdateOpen(false)
   }
 
-  const handleSubmitUpdateTransaction = () => {
-    dispatch(updateTransaction(updateData))
-    setUpdateData({})
-  }
+  // const handleSubmitUpdateTransaction = () => {
+  //   dispatch(updateTransaction(updateData))
+  //   setUpdateData({})
+  // }
 
 
   /// Handle data to delete transaction details
@@ -125,6 +182,19 @@ const TransactionTable = (props) => {
               </div>
             ))}
           </div>
+
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
           <PureModal 
                   header="Update Transaction" 
                   isOpen={updateTransactionOpen}

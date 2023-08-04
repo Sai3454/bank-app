@@ -235,6 +235,9 @@ const initialState = {
     totalDebit: 0,
     pageName: '',
     userDetails,
+    addToastMessage: null,
+    updateToastMessage: null,
+    deleteToastMessage: null,
     loading: false,
     error: null,
     lastSevenDays: [],
@@ -252,16 +255,47 @@ const transactionsSlice = createSlice({
             state.pageName = action.payload.page_name
         },
 
-        
-
         apiRequested: (state, action) => {
             state.loading = true;
         },
 
-
         apiRequestFailed: (state, action) => {
+          state.loading = false;
+          state.pageName = "failure"
+          state.error = action.payload.error
+        },
+
+        resetDeleteToastMessage: (state, action) => {
+          state.deleteToastMessage = null
+        },
+
+        resetUpdateToastMessage: (state, action) => {
+          state.updateToastMessage = null
+        },
+
+        resetAddToastMessage: (state, action) => {
+          state.addToastMessage = null
+        },
+
+        apiAddRequestFailed: (state, action) => {
             state.loading = false;
             state.pageName = "failure"
+            state.error = action.payload.error
+            state.addToastMessage = {method: "failed", message: "Error occured while adding transaction"}
+        },
+
+        apiUpdateRequestFailed: (state, action) => {
+          state.loading = false;
+          state.pageName = "failure"
+          state.error = action.payload.error
+          state.updateToastMessage = {method: "failed", message: "Error occured while updating transaction"}
+        },
+
+        apiDeleteRequestFailed: (state, action) => {
+          state.loading = false;
+          state.pageName = "failure"
+          state.error = action.payload.error
+          state.deleteToastMessage = {method: "failed", message: "Error occured while deleting transaction"}
         },
 
         showLoginError: (state, action) => {
@@ -285,10 +319,11 @@ const transactionsSlice = createSlice({
           state.pageName = ''
           state.totalCredit = 0
           state.totalDebit = 0
-      },
+        },
 
         updateAllTypeTransactions: (state, action) => {
             state.loading = false
+            state.error = null
             state.creditTransactions = state.allTransactions.filter(eachTransaction => eachTransaction.type === 'credit')
             state.debitTransactions = state.allTransactions.filter(eachTransaction => eachTransaction.type === 'debit')
             const sortedData = [...state.allTransactions].sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -332,7 +367,7 @@ const transactionsSlice = createSlice({
                 const sortedAndGroupedTransactions = [];
               
                 // Loop through the last seven days and add the date groups to the final array
-                for (let i = 0; i < 7; i++) {
+                for (let i = 0; i < 7; i++) {   
                   const currentDate = new Date();
                   currentDate.setHours(0, 0, 0, 0);
                   currentDate.setDate(currentDate.getDate() - i);
@@ -365,6 +400,7 @@ const transactionsSlice = createSlice({
 
         addTransaction: (state, action) => {
             state.allTransactions.push(action.payload.insert_transactions_one)
+            state.addToastMessage = {method: "success", message: "Transaction Succesfully Added"}
             if(action.payload.insert_transactions_one.type === 'credit'){
                 state.totalCredit += action.payload.insert_transactions_one.amount
             }else{
@@ -387,6 +423,7 @@ const transactionsSlice = createSlice({
             catch(error){
                 console.log(error.message)
             }
+            state.deleteToastMessage = {method: "success", message: "Transaction Succesfully Deleted"}
         },
 
         updateDebitCredit: (state, action) => {
@@ -424,6 +461,7 @@ const transactionsSlice = createSlice({
             catch(error){
                 console.log(error.message)
             }
+            state.updateToastMessage = {method: "success", message: "Transaction Succesfully Updated"}
         },
     }
 });
@@ -434,6 +472,12 @@ export const {
     setPageName,
     setTabName,
     apiRequestFailed,
+    resetAddToastMessage,
+    resetDeleteToastMessage,
+    resetUpdateToastMessage,
+    apiAddRequestFailed,
+    apiUpdateRequestFailed,
+    apiDeleteRequestFailed,
     getTransactions,
     addTransaction,
     updatedTransaction,
@@ -477,7 +521,7 @@ export const addNewTransaction = (data) => {
         data,
         onStart: apiRequested.type,
         onSuccess: addTransaction.type,
-        onError: apiRequestFailed.type
+        onError: apiAddRequestFailed.type
     });
 }
 
@@ -488,7 +532,7 @@ export const updateTransaction = (data) => {
                 method: "POST",
                 data,
                 onStart: apiRequested.type,
-                onError: apiRequestFailed.type,
+                onError: apiUpdateRequestFailed.type,
                 onSuccess: updatedTransaction.type,
             });
 }
@@ -502,7 +546,7 @@ export const deleteTransaction = (data) => {
         data,
         onStart: apiRequested.type,
         onSuccess: removeTransaction.type,
-        onError: apiRequestFailed.type
+        onError: apiDeleteRequestFailed.type
     });
 }
 

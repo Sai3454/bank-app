@@ -1,5 +1,4 @@
 import React from 'react'
-import {MdOutlineArrowCircleUp, MdOutlineArrowCircleDown} from 'react-icons/md'
 import './index.css'
 import { useSelector } from 'react-redux'
 import { Loader } from '../Loader'

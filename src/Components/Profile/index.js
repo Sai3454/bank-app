@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
-import * as Avatar from '@radix-ui/react-avatar';
 import './index.css'
 import { Header } from '../Header';
 

@@ -96,7 +96,6 @@ const LeftSidebar = () => {
         </div>
       </div>
       <AlertDialogDelete open={logout} close={handleCloseLogoutModal} submit={handleExecuteLogout}/>
-
     </div>
   );
 };
