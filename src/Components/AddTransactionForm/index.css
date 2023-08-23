@@ -38,3 +38,18 @@
     padding: 10px 20px;
     border-radius: 5px;
 }
+
+.bank-app-modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 60vw; */
+  }
+  
+  .bank-app-add-transaction-form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    /* width: 50vw; */
+  }

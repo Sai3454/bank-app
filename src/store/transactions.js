@@ -279,21 +279,21 @@ const transactionsSlice = createSlice({
 
         apiAddRequestFailed: (state, action) => {
             state.loading = false;
-            state.pageName = "failure"
+            // state.pageName = "failure"
             state.error = action.payload.error
             state.addToastMessage = {method: "failed", message: "Error occured while adding transaction"}
         },
 
         apiUpdateRequestFailed: (state, action) => {
           state.loading = false;
-          state.pageName = "failure"
+          // state.pageName = "failure"
           state.error = action.payload.error
           state.updateToastMessage = {method: "failed", message: "Error occured while updating transaction"}
         },
 
         apiDeleteRequestFailed: (state, action) => {
           state.loading = false;
-          state.pageName = "failure"
+          // state.pageName = "failure"
           state.error = action.payload.error
           state.deleteToastMessage = {method: "failed", message: "Error occured while deleting transaction"}
         },
@@ -452,10 +452,19 @@ const transactionsSlice = createSlice({
 
 
         updatedTransaction: (state, action) => {
+          const index = state.allTransactions.findIndex(
+            (transaction) => transaction.id === action.payload.update_transactions_by_pk.id
+          );
+            if(action.payload.update_transactions_by_pk.type !== state.allTransactions[index].type){
+              if(action.payload.update_transactions_by_pk.type === 'credit'){
+                state.totalDebit -= action.payload.update_transactions_by_pk.amount
+                state.totalCredit += action.payload.update_transactions_by_pk.amount
+              }else{
+                state.totalCredit -= action.payload.update_transactions_by_pk.amount
+                state.totalDebit += action.payload.update_transactions_by_pk.amount
+              }
+            }
             try{
-                const index = state.allTransactions.findIndex(
-                    (transaction) => transaction.id === action.payload.update_transactions_by_pk.id
-                );
                 state.allTransactions[index] = action.payload.update_transactions_by_pk;
             }
             catch(error){

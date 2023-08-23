@@ -29,7 +29,7 @@ const Dashboard = () => {
             </div>
             <div className='bank-app-credit-total'>
                 <div className='bank-app-credit-details'>
-                  <p className='total-debit-value'>₹ {totalCredit}</p>
+                  <p className='total-debit-value'>₹ {totalDebit}</p>
                   <h1 className='total-credit'>Debit</h1>
                 </div>
                 <div className='bank-app-credit-image-container'>

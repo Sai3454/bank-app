@@ -121,6 +121,7 @@
 
   .bank-app-logo-container{
     padding: 10px;
+    cursor: pointer;
   }
 
   .bank-app-logo{

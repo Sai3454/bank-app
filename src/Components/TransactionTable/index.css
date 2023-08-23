@@ -32,6 +32,7 @@
 .transaction-table-col-names{
   font-size: 15px;
   font-weight: bold;
+  display: flex;
 }
 
 .transaction-name-col{
@@ -55,7 +56,7 @@
 }
 
 .amount-debit{
-  color: rgb(221, 73, 92);
+  color: rgb(199, 46, 46);
 }
 
 .transaction-editable{
@@ -76,6 +77,10 @@
   height: 5vh;
 }
 
+.record1{
+  font-weight: normal;
+  font-size: 10px;
+}
 
 .record-name{
   display: flex;

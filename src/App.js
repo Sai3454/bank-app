@@ -12,7 +12,7 @@ const App = () => {
           <Routes>
             <Route exact path="/login" element={<SignInForm />} />
             <Route
-              path="/projects/money-app"
+              path="/"
               element={<ProtectedRoute component={Home} />}
             />
           </Routes>

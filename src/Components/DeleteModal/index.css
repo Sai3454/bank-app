@@ -71,7 +71,7 @@ button {
   box-shadow: 0 0 0 2px black;
 }
 .Button.red {
-  background-color: var(--red-4);
+  background-color: rgb(211, 71, 71);
   color: var(--red-11);
 }
 .Button.red:hover {

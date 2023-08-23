@@ -67,6 +67,9 @@ const TransactionForm = (props) => {
   };
 
   return (
+    <div className='bank-app-modal'>
+      <div className='bank-app-add-transaction-form-container'>
+
     <form onSubmit={handleSubmit} className='bank-app-add-transaction-form'>
       <div className='add-transaction-input-container'>
         <label className='add-transaction-label'>Transaction Name</label>
@@ -131,6 +134,8 @@ const TransactionForm = (props) => {
         <button type="submit" className='add-transaction-submit'>Submit</button>
       </div>
     </form>
+      </div>
+    </div>
   );
 };
 

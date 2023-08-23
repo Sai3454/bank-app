@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {FiLogOut} from 'react-icons/fi'
 import Cookies from 'js-cookie';
 import {useNavigate} from 'react-router-dom'
-import AlertDialogDelete from '../AlertDialog';
+import LogoutModal from '../LogoutModal';
 
 
 const LeftSidebar = () => {
@@ -48,7 +48,7 @@ const LeftSidebar = () => {
   return (
     <div className="bank-app-left-sidebar">
         <div className='bank-app-sidebar-top'>
-      <div className="bank-app-logo-container">
+      <div className="bank-app-logo-container" onClick={() => handleTabClick("dashboard")}>
         <img src="https://saikirishnakoorakula.tech/Logo.png" alt="alt" className='bank-app-logo'/>
       </div>
       <div className="bank-app-tabs">
@@ -93,7 +93,7 @@ const LeftSidebar = () => {
         </div>
         </div>
       </div>
-      <AlertDialogDelete open={logout} close={handleCloseLogoutModal} submit={handleExecuteLogout}/>
+      <LogoutModal open={logout} close={handleCloseLogoutModal} submit={handleExecuteLogout}/>
     </div>
   );
 };

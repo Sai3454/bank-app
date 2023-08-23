@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { deleteTransaction, resetUpdateToastMessage, resetDeleteToastMessage, updateTransaction } from '../../store/transactions'
 import PureModal from 'react-pure-modal';
 import TransactionForm from '../AddTransactionForm'
-import AlertDialogDelete from '../AlertDialog';
+import DeleteModal from '../DeleteModal';
 import { Loader } from '../Loader'
 
 
@@ -158,7 +158,7 @@ const TransactionTable = (props) => {
             {transactions.map(eachTransaction => (
               <div key ={eachTransaction.id}>
               <div className='transaction-table-col'>
-                <div className='record-name transaction-name-col'>
+                <div className='transaction-table-col-names transaction-name-col'>
                   {eachTransaction.type === 'credit' ? (
                     <div className='bank-app-uparrow'>
                       <MdOutlineArrowCircleUp className='transaction-up-arrow'/>
@@ -171,13 +171,13 @@ const TransactionTable = (props) => {
                    )}
                   <p>{eachTransaction.transaction_name}</p>
                 </div>
-                <div className='transaction-table-col-names transaction-category-col'>
+                <div className='transaction-table-col-names transaction-category-col '>
                   <p>{eachTransaction.category}</p>
                 </div>
-                <div className='transaction-table-col-names transaction-date-col'>
+                <div className='transaction-table-col-names transaction-date-col '>
                   <p>{formatDate(eachTransaction.date)}</p>
                 </div>
-                <div className={`transaction-table-col-names transaction-amount-col ${eachTransaction.type === 'credit' ? 'amount-credit' : 'amount-debit'}`}>
+                <div className={`transaction-table-col-names transaction-amount-col  ${eachTransaction.type === 'credit' ? 'amount-credit' : 'amount-debit'}`}>
                   {eachTransaction.type === "credit" ? (<p>+₹{eachTransaction.amount}</p>) : (<p>-₹{eachTransaction.amount}</p>)}
                 </div>
                 <div className='transaction-editable'>
@@ -213,9 +213,10 @@ const TransactionTable = (props) => {
                   isOpen={updateTransactionOpen}
                   onClose={handleUpdateCloseModal}
               >
-                  <TransactionForm onClose={handleUpdateCloseModal} data={updateData} method="update"/>
+                  <TransactionForm onClose={handleUpdateCloseModal} data={updateData} method="update" />
+            
             </PureModal>
-          <AlertDialogDelete open={deleteteTransactionOpen} close={handleDeleteCloseModal} submit={handleSubmitDeleteTransaction} delelte={true} />
+          <DeleteModal open={deleteteTransactionOpen} close={handleDeleteCloseModal} submit={handleSubmitDeleteTransaction} delelte={true} />
         </div>
       )}
     </div>
